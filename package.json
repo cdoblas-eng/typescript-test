@@ -1,0 +1,19 @@
+{
+  "name": "typescript_test",
+  "version": "1.0.0",
+  "description": "Testeo de typescript",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsc && node index.js",
+    "run": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "cdoblas",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "googleapis": "^118.0.0"
+  }
+}
