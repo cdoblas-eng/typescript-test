@@ -1,60 +1,61 @@
-import * as credentials from './credentials/credentials.json';
-import { google, sheets_v4 } from 'googleapis';
+//import * as credentials from './credentials/credentials.json';
+// import { google, sheets_v4 } from 'googleapis';
+// import { insertRoscon } from './src/db/db';
 
 
-const spreadsheetId = '1t6npY-2SMi7jDKrhhi2Tatc3RNc-WmrKKn3fmMRJHhk';
-const sheetName = 'grande-nata';
-const range = `${sheetName}!B3:B`; // Rango que incluye todas las filas de la columna A (suponiendo que la tabla comienza en la columna B)
+// const spreadsheetId = '1t6npY-2SMi7jDKrhhi2Tatc3RNc-WmrKKn3fmMRJHhk';
+// const sheetName = 'grande-nata';
+// const range = `${sheetName}!B3:B`; // Rango que incluye todas las filas de la columna A (suponiendo que la tabla comienza en la columna B)
 
-//const range = 'grande-nata!B2';
+// //const range = 'grande-nata!B2';
 
-const client = new google.auth.JWT(
-  credentials.client_email,
-  undefined,
-  credentials.private_key,
-  ['https://www.googleapis.com/auth/spreadsheets']
-);
-
-
-console.log("INICIO SCRIPT:");
+// const client = new google.auth.JWT(
+//   credentials.client_email,
+//   undefined,
+//   credentials.private_key,
+//   ['https://www.googleapis.com/auth/spreadsheets']
+// );
 
 
-async function getUltimaFila() {
-    try {
-      // Autorizar el cliente
-      await client.authorize();
+// console.log("INICIO SCRIPT:");
+
+
+// async function getUltimaFila() {
+//     try {
+//       // Autorizar el cliente
+//       await client.authorize();
   
-      // Crear instancia del servicio de hojas de cálculo de Google
-      const sheets = google.sheets({ version: 'v4', auth: client });
+//       // Crear instancia del servicio de hojas de cálculo de Google
+//       const sheets = google.sheets({ version: 'v4', auth: client });
   
-      // Realizar consulta para obtener los valores de la columna A
-      const response = await sheets.spreadsheets.values.get({
-        spreadsheetId: spreadsheetId,
-        range: range,
-      });
+//       // Realizar consulta para obtener los valores de la columna A
+//       const response = await sheets.spreadsheets.values.get({
+//         spreadsheetId: spreadsheetId,
+//         range: range,
+//       });
   
-      // Obtener los valores de la columna A
-      const values = response.data.values;
+//       // Obtener los valores de la columna A
+//       const values = response.data.values;
 
-      if (values) {
-        for (let i = 0; i < values.length; i++) {
-          const fila = values[i];
-          console.log(`Fila ${i + 1}: ${fila}`);
-        }
-      }
+//       if (values) {
+//         for (let i = 0; i < values.length; i++) {
+//           const fila = values[i];
+//           console.log(`Fila ${i + 1}: ${fila}`);
+//         }
+//       }
   
-      // Determinar la última fila no vacía en la columna A
-      const offset_inicio = 3;
-      const ultimaFila = values ? values.length + offset_inicio: offset_inicio;
+//       // Determinar la última fila no vacía en la columna A
+//       const offset_inicio = 3;
+//       const ultimaFila = values ? values.length + offset_inicio: offset_inicio;
   
-      console.log('La siguiente fila a rellenar es:', ultimaFila);
-    } catch (err) {
-      console.error('Error al obtener la siguiente fila:', err);
-    }
-  }
+//       console.log('La siguiente fila a rellenar es:', ultimaFila);
+//     } catch (err) {
+//       console.error('Error al obtener la siguiente fila:', err);
+//     }
+//   }
   
-  // Llamar a la función para obtener la siguiente fila
-  getUltimaFila();
+//   // Llamar a la función para obtener la siguiente fila
+//   getUltimaFila();
 
 
 // async function readIndex() {
